@@ -11,7 +11,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " utils
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-bash --no-zsh' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-zsh' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'rstacruz/vim-closer'
