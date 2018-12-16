@@ -1,7 +1,9 @@
 SHELL = /bin/bash
 DIR = $(shell pwd)
 
-all: bash vim
+.PHONY: all
+
+all: backup bash vim
 
 bash:
 	ln -sfv $(DIR)/bash_profile ~/.bash_profile;
@@ -15,3 +17,9 @@ bash:
 vim:
 	ln -sfv $(DIR)/vimrc ~/.vimrc;
 	vim +PlugInstall +qall;
+
+backup:
+	mkdir -p ~/old_dots
+	mv ~/.bash* ~/old_dots/ || echo "No .bash* found"
+	mv ~/.profile ~/old_dots/ || echo "No .profile found"
+	mv ~/.vimrc ~/old_dots/ || echo "No .vimrc found"
