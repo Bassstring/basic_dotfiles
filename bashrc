@@ -27,6 +27,14 @@ export HISTCONTROL=ignoreboth
 
 export MANPAGER="less -X"
 
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# enable programmable completion features
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  . /etc/bash_completion
+fi
+
 # Options
 # ------------------------------------------------------------------------------
 # Append to the history file rather then overwriting it.
