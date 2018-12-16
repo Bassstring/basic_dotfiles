@@ -15,4 +15,3 @@ bash:
 vim:
 	ln -sfv $(DIR)/vimrc ~/.vimrc;
 	vim +PlugInstall +qall;
-

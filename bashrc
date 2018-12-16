@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -10,6 +9,23 @@ do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done
 unset file;
+
+# Exports
+# ------------------------------------------------------------------------------
+export EDITOR="vim"
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+export BLOCKSIZE=1k
+
+export HISTSIZE=2000
+export HISTFILESIZE=${HISTSIZE}
+export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:wget *:* --help:ls \
+  :ll:la:cd:exit:clear:history"
+export HISTCONTROL=ignoreboth 
+
+export MANPAGER="less -X"
 
 # Options
 # ------------------------------------------------------------------------------
@@ -45,19 +61,3 @@ shopt -s nocaseglob
 
 # recursive globbing like cd **/foo
 shopt -s globstar
-
-# Exports
-# ------------------------------------------------------------------------------
-export EDITOR="vim"
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export BLOCKSIZE=1k
-export PATH=$PATH:$HOME/bin
-
-export HISTSIZE=1000
-export HISTFILESIZE=${HISTSIZE}
-export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:wget *:* --help:ls \
-  :ll:la:cd:exit:clear:history"
-export HISTCONTROL=ignoreboth 
-export MANPAGER="less -X"
-

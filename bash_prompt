@@ -68,14 +68,7 @@ yellow="\e[1;33m";
 if [[ "${USER}" == "root" ]]; then
 	userColor="${red}";
 else
-	userColor="${green}";
-fi;
-
-# show the hostname when connected via SSH
-if [[ "${SSH_TTY}" ]]; then
-  host="\[${reset}\]@\[${blue}\]\h";
-else
-  host="";
+	userColor="${orange}";
 fi;
 
 # Set terminal prompt

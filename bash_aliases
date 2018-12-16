@@ -12,6 +12,15 @@ alias reload="source ~/.bash_profile"
 # Lists the top 4 processes by CPU usage
 alias hogs="ps -acrx -o pid,%cpu,command | awk 'NR<=5'"
 
+alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+
+# Print each PATH entry on a separate line
+alias path='echo -e ${PATH//:/\\n}'
+# Print each alias
+alias aliases="alias | sed 's/=.*//'"
+# Print each function name
+alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -46,4 +55,3 @@ alias gib="git branch"
 alias gta="git tag"
 alias gr='cd "$(git rev-parse --show-toplevel)"'
 alias gg='git grep'
-
