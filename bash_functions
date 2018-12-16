@@ -38,6 +38,9 @@ ii() {
 del () {
   command mv "$@" ~/.Trash
 }
+emptytrash() {
+  rm -rfv ~/.Trash/* ;\
+}
 
 # Overwrite man with different color
 man() {
