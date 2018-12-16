@@ -73,7 +73,8 @@ fi;
 
 # Set terminal prompt
 PS1="\[${userColor}\]\u"; # username
-PS1+=$host
+PS1+="\[${white}\]@"; # host
+PS1+="\[${red}\]\h"; # host
 PS1+="\[${white}\]:\A"; # time
 PS1+="\[${bold}\] ";
 PS1+="\[${blue}\]\w"; # working directory full path
