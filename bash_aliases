@@ -9,8 +9,6 @@ alias ......='cd ../../../../..'
 alias vi='vim'
 alias reload="source ~/.bash_profile"
 
-# CPU Monitoring
-alias cpu="top -F -R -o cpu"
 # Lists the top 4 processes by CPU usage
 alias hogs="ps -acrx -o pid,%cpu,command | awk 'NR<=5'"
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] return
+[ -z "$PS1" ] && return
 
 export PLATFORM=$(uname -s)
 
@@ -60,3 +60,4 @@ export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:wget *:* --help:ls \
   :ll:la:cd:exit:clear:history"
 export HISTCONTROL=ignoreboth 
 export MANPAGER="less -X"
+
