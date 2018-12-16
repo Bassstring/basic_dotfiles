@@ -35,6 +35,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
+## source fuzzy file search - fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS="--reverse --inline-info --cycle"
+
 # Options
 # ------------------------------------------------------------------------------
 # Append to the history file rather then overwriting it.

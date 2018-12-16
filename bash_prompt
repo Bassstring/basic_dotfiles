@@ -76,10 +76,9 @@ PS1="\[${userColor}\]\u"; # username
 PS1+=$host
 PS1+="\[${white}\]:\A"; # time
 PS1+="\[${bold}\] ";
-PS1+="\[${orange}\]\w"; # working directory full path
+PS1+="\[${blue}\]\w"; # working directory full path
 PS1+="\[${green}\]";
 PS1+="\$(get_git_repository_details)"; # git branch
-PS1+="\[${blue}\]";
 PS1+="\n";
 PS1+="\[${white}\]$ ";
 export PS1;

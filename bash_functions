@@ -65,3 +65,14 @@ man() {
 		LESS_TERMCAP_us=$(printf "\e[1;32m") \
 			man "$@"
 }
+# v - fuzzy vim
+v(){
+  local files
+  files=$(fzf -1 -0 --sort -m) && vim $files || return 1
+}
+# vz - fuzzy vim with preview
+vz() {
+  local file
+  file="$(fzf -1 -0 --sort \
+    --preview 'head -100 {}' +m)" && vim "${file}" || return 1
+}

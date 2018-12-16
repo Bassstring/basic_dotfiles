@@ -11,6 +11,8 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " utils
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-bash --no-zsh' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'rstacruz/vim-closer'
 Plug 'tpope/vim-surround'
@@ -85,7 +87,6 @@ set colorcolumn=+1
 
 colorscheme night-owl
 syntax enable
-
 
 set number relativenumber
 augroup numbertoggle
@@ -199,3 +200,38 @@ let g:NERDTrimTrailingWhitespace = 1
 nnoremap <Leader>cc NERDComComment
 nnoremap <Leader>c<space> NERDComToggleComment
 nnoremap <Leader>cs NERDComSexyComment
+
+" FZF
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_layout = { 'up': '~40%' }
+let g:fzf_action = {
+      \ 'ctrl-x': 'split',
+      \ 'ctrl-v': 'vsplit' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+noremap <C-T> :FZF --reverse --inline-info --cycle<CR>
+noremap <C-H> :FzfHelptags <CR>
+nnoremap <C-J> :FzfBuffers<Cr>
+nnoremap <C-P> :FzfBLines<Cr>
+" [[B]Commits] Customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+nnoremap <Leader>gc :FzfBCommits<Cr>
+nnoremap <Leader>h :FzfHistory<Cr>
+imap <C-X><C-F> <plug>(fzf-complete-path)
+imap <C-X><C-J> <plug>(fzf-complete-file-ag)
+imap <C-X><C-L> <plug>(fzf-complete-line)
