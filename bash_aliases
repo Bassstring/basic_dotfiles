@@ -21,6 +21,9 @@ alias aliases="alias | sed 's/=.*//'"
 # Print each function name
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 
+alias dotfiles='cd ~/.dotfiles'
+
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
