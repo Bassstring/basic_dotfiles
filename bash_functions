@@ -39,12 +39,12 @@ extract () {
   fi
 }
 ii() {
-  echo -e "\nYou are logged on ${RED}$HOST"
-  echo -e "\nAdditionnal information:$NC " ; uname -a
-  echo -e "\n${RED}Users logged on:$NC " ; w -h
-  echo -e "\n${RED}Current date :$NC " ; date
-  echo -e "\n${RED}Machine stats :$NC " ; uptime
-  echo -e "\nIP for Inter Connection:$NC"; curl -4 icanhazip.com
+  echo -e "\n${ORANGE}You are logged on:$RESET"; hostname
+  echo -e "\n${LIGHT_BLUE}Additionnal information:$RESET " ; uname -a
+  echo -e "\n${LIGHT_BLUE}Users logged on:$RESET " ; w -h
+  echo -e "\n${LIGHT_BLUE}Current date :$RESET " ; date
+  echo -e "\n${LIGHT_BLUE}Machine stats :$RESET " ; uptime
+  echo -e "\n${LIGHT_BLUE}IP for Inter Connection:$RESET"; curl -4 icanhazip.com
 }
 del () {
   command mv "$@" ~/.Trash
