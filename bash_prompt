@@ -77,7 +77,7 @@ LIGHT_GRAY=$'\e[0;37m'
 if [[ "${USER}" == "root" ]]; then
 	userColor="${RED}";
 else
-	userColor="${ORANGE}";
+	userColor="${LIGHT_BLUE}";
 fi;
 
 # Set terminal prompt
