@@ -16,19 +16,17 @@ alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
-# Print each alias
-alias alias="alias | sed 's/=.*//'"
+
 # Print each function name
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 
 alias dotfiles='cd ~/.dotfiles'
 
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias l='ls -l'
   alias ls='ls --color=auto'
+  alias l='ls -l'
   alias ll='ls -la'
   alias la='ls -a'
   alias l.='ls -d .*'
