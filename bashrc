@@ -21,7 +21,7 @@ export BLOCKSIZE=1k
 
 export HISTSIZE=2000
 export HISTFILESIZE=${HISTSIZE}
-export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:wget *:* --help:ls \
+export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:wget *:ls \
   :ll:la:cd:exit:clear:history"
 export HISTCONTROL=ignoreboth 
 
