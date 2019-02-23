@@ -10,6 +10,8 @@ do
 done
 unset file;
 
+[ -r ".bash_local" ] && [ -f ".bash_local" ] && source .bash_local;
+
 # Exports
 # ------------------------------------------------------------------------------
 export EDITOR="vim"
