@@ -46,7 +46,7 @@ alias vi='vim'
 alias vimup="vim +PlugUpdate +qall && vim +PlugUpgrade +qall"
 alias :q="exit"
 alias ipd="curl -sS ipinfo.io  2>/dev/null | jq ."
-alias localrc="if [[ -a ~/.local.zsh ]]; then ${EDITOR} ~/.local.zsh; fi"
+alias localrc="[ -r "~/.bash_local" ] && [ -f "~/.bash_local" ] && vim ~/.bash_local;"
 
 alias ta='tmux attach -t'
 alias tad='tmux attach -d -t'
