@@ -30,6 +30,7 @@ export HISTCONTROL=ignoreboth
 export LESS='-XFR'
 export MANPAGER="less -X"
 export PAGER='less'
+export HTOPRC=~/.htoprc
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
