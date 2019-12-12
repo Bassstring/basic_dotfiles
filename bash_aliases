@@ -7,7 +7,10 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 alias vi='vim'
-alias src="source ~/.bash_profile"
+alias cp='nice cp'
+alias mv='nice mv'
+alias grep='grep --color=auto'
+alias src='exec "$SHELL" -l'
 
 # Lists the top 4 processes by CPU usage
 alias hogs="ps -acrx -o pid,%cpu,command | awk 'NR<=5'"
@@ -20,8 +23,7 @@ alias path='echo -e ${PATH//:/\\n}'
 # Print each function name
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 
-alias dotfiles='cd ~/.dotfiles'
-
+alias {dots,dotfiles}='cd ~/.dotfiles'
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -38,11 +40,28 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias venv='source ./venv/bin/activate'
-
 ## Vim related shortcuts
 alias vimrc="vim ~/.vimrc"
 alias vi='vim'
 alias vimup="vim +PlugUpdate +qall && vim +PlugUpgrade +qall"
+alias :q="exit"
+alias ipd="curl -sS ipinfo.io  2>/dev/null | jq ."
+alias localrc="if [[ -a ~/.local.zsh ]]; then ${EDITOR} ~/.local.zsh; fi"
+
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias tksv='tmux kill-server'
+alias tkss='tmux kill-session -t'
+
+alias dps='docker ps'
+alias dimg='docker images'
+alias drmall='docker rm $(docker ps -a -q)'
+alias dkillall='docker kill $(docker ps -a -q)'
+alias drmiall='docker rmi $(docker images -a -q)'
+alias dsdf='docker system df'
+alias dsev='docker system events'
 
 ## git alias
 alias g='git'

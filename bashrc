@@ -25,9 +25,11 @@ export HISTSIZE=2000
 export HISTFILESIZE=${HISTSIZE}
 export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:wget *:ls \
   :ll:la:cd:exit:clear:history"
-export HISTCONTROL=ignoreboth 
+export HISTCONTROL=ignoreboth
 
+export LESS='-XFR'
 export MANPAGER="less -X"
+export PAGER='less'
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"

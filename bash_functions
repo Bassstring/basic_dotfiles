@@ -71,15 +71,9 @@ v(){
   IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
-# vz - fuzzy vim with preview
-vz() {
-  local file
-  file="$(fzf -1 -0 --sort \
-    --preview 'head -100 {}' +m)" && vim "${file}" || return 1
-}
 
 # flog - fuzzy commit logs
-flog() {
+glz() {
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
@@ -90,13 +84,46 @@ flog() {
   FZF-EOF"
 }
 
-# flog - fuzzy commit logs with preview
-flogz() {
-  git log --pretty=oneline --abbrev-commit | 
-    fzf --preview 'echo {} | cut -f 1 -d " " | xargs git show --color=always'
+# Get cheat sheet of command from cheat.sh. cheat <cmd>
+cheat() {
+  curl https://cheat.sh/$@
 }
 
-# Get cheat sheet of command from cheat.sh. cheat <cmd>
-cheat(){
-  curl https://cheat.sh/$@
+retry() {
+  while true; do $@; sleep 1; done
+}
+
+dcids() {
+  local cids
+  if [[ -n $1 ]] then; cmd="docker ps -a"; else cmd="docker ps"; fi
+  cids=$(eval "$cmd --format 'table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}' \
+    | sed 1d | fzf --exit-0 --query='$1'")
+  echo $cids | awk '{print $1}'
+}
+dimgids() {
+  local imgids
+  imgids=$(docker images -a | sed 1d | fzf --exit-0 --query="$1" | awk '{print $3}')
+  echo $imgids
+}
+d{start,rm} () {
+  local cid=$(dcids 1)
+  local fn=${funcstack[1]:1}
+  [ -n "$cid" ] && docker $fn "$cid"
+}
+d{stop,attach,restart,kill} () {
+  local cid=$(dcids)
+  local fn=${funcstack[1]:1}
+  [ -n "$cid" ] && docker $fn "$cid"
+}
+dlog() {
+  local cid=$(dcids 1)
+  [ -n "$cid" ] && docker logs -f "$cid"
+}
+dexb() {
+  local cid=$(dcids)
+  [ -n "$cid" ] && docker exec -it "$cid" bash
+}
+drmi() {
+  local imgids=$(dimgids)
+  [ -n "$imgids" ] && docker rmi "$imgids"
 }

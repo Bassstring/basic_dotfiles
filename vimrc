@@ -17,10 +17,13 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'rstacruz/vim-closer'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'mhinz/vim-signify'
+
 " style
+Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'luochen1990/rainbow'
-Plug 'haishanh/night-owl.vim'
+Plug 'https://github.com/joshdick/onedark.vim'
 
 call plug#end()
 
@@ -47,12 +50,12 @@ set lazyredraw              " redraw only when needed(not in execution of macro)
 set synmaxcol=2500          " Limit syntax highlighting (this
                             " avoids the very slow redrawing
                             " when files contain long lines).
-                            
+
  " Use the system clipboard
-set clipboard=unnamed       
-if has("unnamedplus")       
+set clipboard=unnamed
+if has("unnamedplus")
   set clipboard+=unnamedplus
-endif                       
+endif
 
 if has('mouse')
   set mouse=a
@@ -85,7 +88,7 @@ set laststatus=2
 set textwidth=80
 set colorcolumn=+1
 
-colorscheme night-owl
+colorscheme onedark
 syntax enable
 
 set number relativenumber
@@ -124,30 +127,36 @@ autocmd BufReadPost *
 " General Mappings                                                             "
 " ---------------------------------------------------------------------------- "
 
-" tab navigation
-map <Tab> :bn<CR>
-map <S-Tab> :bp<CR>
+" Don't yank to default register when changing something
+nnoremap c "xc
+xnoremap c "xc
 
-"" Close buffer
+map <C-J> :bprev<CR>
+map <C-K> :bnext<CR>
+
+" Close buffer
 noremap <Leader>c :bd<CR>
-"" Clear search highlight
-nnoremap <silent> <Leader><space> :noh<cr>
+
+" Clear search highlight
+nnoremap <silent> <Leader><space> :noh<CR>
+
 " Toggle wrap mode
 nnoremap <Leader>wr :set wrap!<CR>
-" Fast save
-nnoremap <Leader><Leader> :w<cr>
 
-" HARDMODE
+" Fast save
+nnoremap <Leader><Leader> :w<CR>
+
 " Disable Arrow keys in Escape mode
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-" " Disable Arrow keys in Insert mode
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+map <Up> <nop>
+map <Down> <nop>
+map <Left> <nop>
+map <Right> <nop>
+
+" Disable Arrow keys in Insert mode
+imap <Up> <nop>
+imap <Down> <nop>
+imap <Left> <nop>
+imap <Right> <nop>
 
 " Rename current file
 function! RenameFile()
@@ -159,16 +168,35 @@ function! RenameFile()
     redraw!
   endif
 endfunction
-map <Leader>re :call RenameFile()<cr>
+map <Leader>re :call RenameFile()<CR>
 
 " [,* ] Search and replace the word under the cursor.
-nmap <Leader>* :%s/\<<C-r><C-w>\>//<Left>
+nmap <Leader>* :%s/\<<C-r><C-w>\>//g<Left><Left>
 
-" replace the word with last yanked text
+" w!! to save with sudo
+cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
+
+" replace word with text in register "0
 nnoremap <Leader>pr viw"0p
 
 " Switch CWD to the directory of the open buffer
-map <Leader>cd :cd %:p:h<cr>:pwd<cr>
+map <Leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" Close quickfix window (,qq)
+map <Leader>qq :cclose<CR>
+
+" List contents of all registers
+nnoremap <silent> "" :registers<CR>
+
+" add semicolon at end of line
+map <Leader>; g_a;<Esc>
+
+nnoremap <C-W>- :split<CR>
+nnoremap <C-W>\| :vsplit<CR>
+
+" remain in visual mode after code shift
+vnoremap < <gv
+vnoremap > >gv
 
 " ---------------------------------------------------------------------------- "
 " Plugin Configuration                                                         "
@@ -179,6 +207,7 @@ let g:rainbow_active = 1
 
 " Airline
 let g:airline_powerline_fonts = 1
+let g:airline_theme='onedark'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
