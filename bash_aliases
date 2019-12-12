@@ -9,8 +9,7 @@ alias ......='cd ../../../../..'
 alias vi='vim'
 alias cp='nice cp'
 alias mv='nice mv'
-alias grep='grep --color=auto'
-alias src='exec "$SHELL" -l'
+alias src="source ~/.bash_profile"
 
 # Lists the top 4 processes by CPU usage
 alias hogs="ps -acrx -o pid,%cpu,command | awk 'NR<=5'"
@@ -46,7 +45,7 @@ alias vi='vim'
 alias vimup="vim +PlugUpdate +qall && vim +PlugUpgrade +qall"
 alias :q="exit"
 alias ipd="curl -sS ipinfo.io  2>/dev/null | jq ."
-alias localrc="[ -r "~/.bash_local" ] && [ -f "~/.bash_local" ] && vim ~/.bash_local;"
+alias localrc="vim ~/.bash_local"
 
 alias ta='tmux attach -t'
 alias tad='tmux attach -d -t'

@@ -255,7 +255,6 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 noremap <C-T> :FZF --reverse --inline-info --cycle<CR>
 noremap <C-H> :FzfHelptags <CR>
-nnoremap <C-J> :FzfBuffers<Cr>
 nnoremap <C-P> :FzfBLines<Cr>
 " [[B]Commits] Customize the options used by 'git log':
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
