@@ -94,8 +94,13 @@ retry() {
 }
 
 dcids() {
-  local cids
-  if [[ -n $1 ]] then; cmd="docker ps -a"; else cmd="docker ps"; fi
+  local cids cmd
+  if [ -n "$1" ]
+  then
+    cmd="docker ps -a";
+  else
+    cmd="docker ps";
+  fi
   cids=$(eval "$cmd --format 'table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}' \
     | sed 1d | fzf --exit-0 --query='$1'")
   echo $cids | awk '{print $1}'
