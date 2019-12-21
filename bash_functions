@@ -8,7 +8,7 @@ mcd () {
 }
 # ls with file permissions in octal format
 lla(){
- 	ls -l  "$@" | awk '
+ 	ls -l "$@" | awk '
     {
       k=0;
       for (i=0;i<=8;i++)

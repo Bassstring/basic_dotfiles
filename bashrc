@@ -10,7 +10,7 @@ do
 done
 unset file;
 
-[ -r "~/.bash_local" ] && [ -f "~/.bash_local" ] && source ~/.bash_local;
+[ -r "$HOME/.bash_local" ] && [ -f "$HOME/.bash_local" ] && source $HOME/.bash_local;
 
 # Exports
 # ------------------------------------------------------------------------------
