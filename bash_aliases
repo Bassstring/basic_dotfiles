@@ -20,7 +20,7 @@ alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 alias path='echo -e ${PATH//:/\\n}'
 
 # Print each function name
-alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
+alias showfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 
 alias {dots,dotfiles}='cd ~/.dotfiles'
 # enable color support of ls and also add handy aliases
@@ -47,6 +47,10 @@ alias :q="exit"
 alias ipd="curl -sS ipinfo.io  2>/dev/null | jq ."
 alias localrc="vim ~/.bash_local"
 
+alias v0="vim -c \"normal '0\""
+alias wgpu='watch -n 0.1 -d nvidia-smi'
+alias whou='who -u | sort -k 3 --reverse'
+
 alias ta='tmux attach -t'
 alias tad='tmux attach -d -t'
 alias ts='tmux new-session -s'
@@ -69,6 +73,7 @@ alias gp='git push'
 alias gco='git checkout'
 alias gm='git merge'
 alias gd='git diff'
+alias gdw='git diff --word-diff'
 alias glg='git log --stat --color'
 alias gb="git branch"
 alias gc='git commit'
@@ -80,3 +85,5 @@ alias gst='git status'
 alias gt="git tag"
 alias grt='cd "$(git rev-parse --show-toplevel)"'
 alias gg='git grep'
+alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+

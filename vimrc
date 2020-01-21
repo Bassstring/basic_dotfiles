@@ -23,7 +23,7 @@ Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'luochen1990/rainbow'
-Plug 'https://github.com/joshdick/onedark.vim'
+Plug 'joshdick/onedark.vim'
 
 call plug#end()
 
@@ -171,7 +171,10 @@ endfunction
 map <Leader>re :call RenameFile()<CR>
 
 " [,* ] Search and replace the word under the cursor.
-nmap <Leader>* :%s/\<<C-r><C-w>\>//g<Left><Left>
+" current line
+nmap <Leader>* :s/\<<C-r><C-w>\>//g<Left><Left>
+" all occurrences
+nmap <Leader>** :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " w!! to save with sudo
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
@@ -191,8 +194,9 @@ nnoremap <silent> "" :registers<CR>
 " add semicolon at end of line
 map <Leader>; g_a;<Esc>
 
-nnoremap <C-W>- :split<CR>
-nnoremap <C-W>\| :vsplit<CR>
+" tmux style shortcuts
+nnoremap <C-W>% :split<CR>
+nnoremap <C-W>" :vsplit<CR>
 
 " remain in visual mode after code shift
 vnoremap < <gv

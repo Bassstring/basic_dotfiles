@@ -27,9 +27,9 @@ export HISTIGNORE="&:[bf]g:c:clear:history:exit:q:pwd:wget *:ls \
   :ll:la:cd:exit:clear:history"
 export HISTCONTROL=ignoreboth
 
-export LESS='-XFR'
-export MANPAGER="less -X"
+export LESS='-XFRx2'
 export PAGER='less'
+export MANPAGER='less'
 export HTOPRC=~/.htoprc
 
 # make less more friendly for non-text input files, see lesspipe(1)
