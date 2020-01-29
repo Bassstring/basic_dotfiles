@@ -47,6 +47,10 @@ alias :q="exit"
 alias ipd="curl -sS ipinfo.io  2>/dev/null | jq ."
 alias localrc="vim ~/.bash_local"
 
+alias varwww='cd /var/www/html/'
+alias mails="vim /var/mail/$USER"
+alias distro='cat /etc/issue'
+
 alias v0="vim -c \"normal '0\""
 alias wgpu='watch -n 0.1 -d nvidia-smi'
 alias whou='who -u | sort -k 3 --reverse'
