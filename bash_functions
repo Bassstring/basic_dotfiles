@@ -132,3 +132,8 @@ drmi() {
   local imgids=$(dimgids)
   [ -n "$imgids" ] && docker rmi "$imgids"
 }
+dnotebook() {
+  local port=8889
+  docker run --rm -p "$port:$port" -v "$PWD":/home/jovyan/work \
+        bassstring/notebook:latest start-notebook.sh --NotebookApp.port=$port
+}
