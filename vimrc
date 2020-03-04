@@ -84,10 +84,6 @@ set background=dark
 set encoding=utf-8
 set laststatus=2
 
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
-
 colorscheme onedark
 syntax enable
 
