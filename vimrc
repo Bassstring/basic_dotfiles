@@ -22,6 +22,7 @@ Plug 'mhinz/vim-signify'
 " style
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'luochen1990/rainbow'
 Plug 'ayu-theme/ayu-vim'
 
@@ -85,7 +86,7 @@ set encoding=utf-8
 set laststatus=2
 
 set termguicolors
-let ayucolor="dark"
+let ayucolor="mirage"
 colorscheme ayu
 
 syntax enable
@@ -210,7 +211,7 @@ let g:rainbow_active = 1
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='ayu_dark'
+let g:airline_theme='ayu_mirage'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
