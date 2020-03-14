@@ -23,7 +23,7 @@ Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-airline/vim-airline'
 Plug 'luochen1990/rainbow'
-Plug 'joshdick/onedark.vim'
+Plug 'ayu-theme/ayu-vim'
 
 call plug#end()
 
@@ -84,7 +84,10 @@ set background=dark
 set encoding=utf-8
 set laststatus=2
 
-colorscheme onedark
+set termguicolors
+let ayucolor="dark"
+colorscheme ayu
+
 syntax enable
 
 set number relativenumber
@@ -207,7 +210,7 @@ let g:rainbow_active = 1
 
 " Airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
+let g:airline_theme='ayu_dark'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
